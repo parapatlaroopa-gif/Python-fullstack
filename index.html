@@ -1,68 +1,82 @@
 
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Apple</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
 </head>
 
-<body bgcolor="black">
+<body>
 
-    <center>
+    <div class="form-box">
 
-        <br><br>
+        <h2>Registration Form</h2>
+        <p>Create account</p>
 
-        <font color="white" size="7">
-            <b> Apple</b>
-        </font>
+        <form onsubmit="return data()" action="abc.html">
 
-        <br><br><br>
+            <label for="username">Username</label><br>
+            <input type="text" id="username" placeholder="Enter username"><br>
 
-        <font color="white" size="6">
-            iPhone
-        </font>
+            <label for="email">Email</label><br>
+            <input type="email" id="email" placeholder="Enter your mail"><br>
 
-        <br><br>
+            <label for="password">Password</label><br>
+            <input type="password" id="password" placeholder="Enter password"><br>
 
-        <font color="lightgray" size="4">
-            The experience is better than ever.
-        </font>
+            <label for="confirm-password">Confirm Password</label><br>
+            <input type="password" id="confirm-password" placeholder="Confirm password"><br>
 
-        <br><br>
+            <button type="submit">Submit</button>
 
-        <img
-            src="images/iphone16.jpeg"
-            alt="iPhone 16"
-            width="400"
-        >
+        </form>
 
-        <br><br>
+    </div>
 
-        <font color="white" size="4">
-            Powerful. Beautiful. Ready for anything.
-        </font>
+    <script>
 
-        <br><br>
+        function data() {
 
-        <a href="iphone16.html">
-            <font color="#2997ff" size="4">
-                Learn more
-            </font>
-        </a>
+            const a = document.getElementById("username").value.trim();
+            const b = document.getElementById("email").value.trim();
+            const c = document.getElementById("password").value;
+            const d = document.getElementById("confirm-password").value;
 
-        &nbsp;&nbsp;&nbsp;
+            const emailpattern = /^[^\s@]+@[^\s@]+$/;
 
-        <a href="iphone16.html">
-            <font color="#2997ff" size="4">
-                Buy
-            </font>
-        </a>
+            if (a === "" || b === "" || c === "" || d === "") {
 
-        <br><br><br>
+                alert("All Fields are required");
+                return false;
 
-    </center>
+            } else if (a.length < 6) {
+
+                alert("Username should contain more than six characters");
+                return false;
+
+            } else if (!emailpattern.test(b)) {
+
+                alert("Email is Invalid");
+                return false;
+
+            } else if (c.length < 6) {
+
+                alert("Password should contain at least six characters");
+                return false;
+
+            } else if (c !== d) {
+
+                alert("Password and Confirm Password do not match");
+                return false;
+
+            }
+
+            return true;
+        }
+
+    </script>
 
 </body>
-
 </html>
 
