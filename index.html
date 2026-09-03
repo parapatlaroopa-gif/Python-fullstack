@@ -1,82 +1,127 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
+
+    <title>Expense Tracker</title>
 </head>
 
 <body>
 
-    <div class="form-box">
+    <div class="container">
 
-        <h2>Registration Form</h2>
-        <p>Create account</p>
+        <h1>Expense Tracker</h1>
 
-        <form onsubmit="return data()" action="abc.html">
+        <!-- Income -->
+        <div>
+            <h3>Income</h3>
+            <p>
+                ₹<span id="totalIncome">0</span>
+            </p>
+        </div>
 
-            <label for="username">Username</label><br>
-            <input type="text" id="username" placeholder="Enter username"><br>
+        <!-- Expenses -->
+        <div>
+            <h3>Expenses</h3>
+            <p>
+                ₹<span id="totalExpenses">0</span>
+            </p>
+        </div>
 
-            <label for="email">Email</label><br>
-            <input type="email" id="email" placeholder="Enter your mail"><br>
+        <!-- Balance -->
+        <div>
+            <h3>Balance</h3>
+            <p>
+                ₹<span id="totalBalance">0</span>
+            </p>
+        </div>
 
-            <label for="password">Password</label><br>
-            <input type="password" id="password" placeholder="Enter password"><br>
-
-            <label for="confirm-password">Confirm Password</label><br>
-            <input type="password" id="confirm-password" placeholder="Confirm password"><br>
-
-            <button type="submit">Submit</button>
-
-        </form>
+        <!-- Message -->
+        <p id="message"></p>
 
     </div>
 
-    <script>
 
-        function data() {
+    <!-- Transaction Form -->
+    <form id="form">
 
-            const a = document.getElementById("username").value.trim();
-            const b = document.getElementById("email").value.trim();
-            const c = document.getElementById("password").value;
-            const d = document.getElementById("confirm-password").value;
+        <!-- Name -->
+        <input
+            type="text"
+            id="name"
+            placeholder="Name"
+        >
+        <br><br>
 
-            const emailpattern = /^[^\s@]+@[^\s@]+$/;
 
-            if (a === "" || b === "" || c === "" || d === "") {
+        <!-- Amount -->
+        <input
+            type="number"
+            id="amount"
+            placeholder="Amount"
+        >
+        <br><br>
 
-                alert("All Fields are required");
-                return false;
 
-            } else if (a.length < 6) {
+        <!-- Transaction Type -->
+        <select id="transactionType">
 
-                alert("Username should contain more than six characters");
-                return false;
+            <option value="income">
+                Income
+            </option>
 
-            } else if (!emailpattern.test(b)) {
+            <option value="expense">
+                Expense
+            </option>
 
-                alert("Email is Invalid");
-                return false;
+        </select>
 
-            } else if (c.length < 6) {
+        <br><br>
 
-                alert("Password should contain at least six characters");
-                return false;
 
-            } else if (c !== d) {
+        <!-- Category -->
+        <select id="transactionCategory">
 
-                alert("Password and Confirm Password do not match");
-                return false;
+            <option value="Salary">
+                Salary
+            </option>
 
-            }
+            <option value="Groceries">
+                Groceries
+            </option>
 
-            return true;
-        }
+            <option value="Utilities">
+                Utilities
+            </option>
 
-    </script>
+        </select>
+
+        <br><br>
+
+
+        <!-- Submit Button -->
+        <button type="submit">
+            Add Transaction
+        </button>
+
+    </form>
+
+
+    <!-- Transactions -->
+    <div>
+
+        <h2>Transactions</h2>
+
+        <div id="list"></div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 
 </body>
-</html>
 
+</html>
